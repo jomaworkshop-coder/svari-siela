@@ -184,9 +184,10 @@ h1,h2,h3,.display{font-family:'Archivo',system-ui,sans-serif}
 @media (max-width:560px){
   .header-call span{display:none}
   .header-call{padding:11px 13px}
-  /* zoom the hero video/photo out ~25% so the technician's head keeps headroom as the clip moves */
-  .hero-bg{overflow:hidden; background:#eaf1f8}
-  .hero-bg img,.hero-bg video{transform:scale(.75); transform-origin:center 42%}
+  /* zoom hero out ~25% for head headroom while keeping FULL width (no side gaps) —
+     shorter full-width band, centered, with light top/bottom breathing room */
+  .hero-bg{overflow:hidden; background:#eaf1f8; display:flex; align-items:center}
+  .hero-bg img,.hero-bg video{height:76%; object-position:80% center}
   .hero .wrap{padding-bottom:40px}
   .btn{flex:1; justify-content:center}
   .call-bar{display:block}
