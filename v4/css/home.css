@@ -179,7 +179,7 @@ h1,h2,h3,.display{font-family:'Archivo',system-ui,sans-serif}
   .service-grid{grid-template-columns:1fr; gap:16px}
   .service-card{min-height:0}
   .hero{min-height:88vh}
-  .hero-bg img,.hero-bg video{object-position:70% center}
+  .hero-bg img,.hero-bg video{object-position:80% center}
 }
 @media (max-width:560px){
   .header-call span{display:none}
