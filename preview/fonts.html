@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Švari Siela — šriftų palyginimas (v4)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0e2740;          /* deep navy */
+    --ink-2:#12365c;
+    --blue:#1f6feb;         /* bright trust blue */
+    --blue-strong:#155ec9;
+    --sky:#3d8bff;
+    --paper:#eef3f9;
+    --bone:#ffffff;
+    --muted:#5b6b7d;
+    --line:rgba(14,39,64,.12);
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--paper); color:var(--ink); font-family:'Inter',system-ui,sans-serif; line-height:1.6}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 22px}
+  .page-head{text-align:center; padding:52px 22px 8px}
+  .page-head .kicker{color:var(--blue); font-weight:700; letter-spacing:.22em; text-transform:uppercase; font-size:12px}
+  .page-head h1{font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:clamp(26px,4vw,38px); margin:12px 0 8px; letter-spacing:-.01em}
+  .page-head p{color:var(--muted); max-width:600px; margin:0 auto; font-size:15.5px}
+
+  .option{padding:34px 0 10px}
+  .opt-tag{
+    display:inline-flex; align-items:center; gap:12px; margin-bottom:16px;
+    font-weight:700; font-size:13px; letter-spacing:.04em;
+  }
+  .opt-num{background:var(--blue); color:#fff; border-radius:999px; padding:5px 13px; font-size:12px; letter-spacing:.08em}
+  .opt-tag .fonts{color:var(--muted); font-weight:500}
+
+  /* Hero mockup */
+  .mock{
+    position:relative; border-radius:20px; overflow:hidden; background:var(--bone);
+    box-shadow:0 20px 50px rgba(14,39,64,.12); border:1px solid var(--line);
+  }
+  .mock-bg{position:absolute; inset:0}
+  .mock-bg img{width:100%; height:100%; object-fit:cover; object-position:70% center}
+  .mock-bg::after{content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.9) 30%, rgba(255,255,255,.5) 55%, rgba(255,255,255,.05) 78%, rgba(255,255,255,0) 100%);}
+  .mock-nav{position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; padding:20px 30px}
+  .mock-brand{display:flex; align-items:center; gap:9px; font-weight:800; letter-spacing:.1em; font-size:14px; color:var(--ink)}
+  .mock-brand svg{width:26px; height:26px; color:var(--blue)}
+  .mock-call{background:var(--blue); color:#fff; font-weight:700; font-size:12.5px; padding:9px 15px; border-radius:999px}
+  .mock-body{position:relative; z-index:2; padding:26px 30px 40px; max-width:620px}
+  .mock-eyebrow{color:var(--blue); font-weight:700; letter-spacing:.2em; text-transform:uppercase; font-size:11.5px; margin-bottom:14px}
+  .mock h2{
+    margin:0; font-weight:800; text-transform:uppercase; letter-spacing:-.015em; line-height:.98;
+    font-size:clamp(32px,5.2vw,58px); color:var(--ink);
+  }
+  .mock h2 .accent{color:var(--blue); display:block}
+  .mock .sub{margin:18px 0 0; color:#33475b; font-size:16px; max-width:440px}
+  .mock .cta{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 24px; border-radius:999px; font-weight:700; font-size:14.5px; text-decoration:none}
+  .btn-primary{background:var(--blue); color:#fff}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink)}
+
+  /* Specimen */
+  .specimen{display:grid; grid-template-columns:150px 1fr; gap:26px; margin-top:20px; padding:24px 26px; background:var(--bone); border:1px solid var(--line); border-radius:16px; align-items:center}
+  .specimen .aa{font-size:82px; line-height:1; font-weight:800; color:var(--ink)}
+  .specimen .weights{display:flex; flex-direction:column; gap:3px}
+  .specimen .weights span{font-size:19px; color:var(--ink)}
+  .specimen .para{margin:10px 0 0; color:var(--muted); font-size:14.5px; max-width:640px}
+  .w4{font-weight:400}.w5{font-weight:500}.w6{font-weight:600}.w7{font-weight:700}.w8{font-weight:800}
+
+  /* Font families per option */
+  .f-archivo h2, .f-archivo .mock-brand{font-family:'Archivo',sans-serif; font-weight:800}
+  .f-archivo .disp, .f-archivo .aa, .f-archivo .weights span{font-family:'Archivo',sans-serif}
+  .f-archivo .body, .f-archivo .sub, .f-archivo .mock-eyebrow, .f-archivo .btn, .f-archivo .para{font-family:'Inter',sans-serif}
+
+  .f-grotesk h2, .f-grotesk .mock-brand, .f-grotesk .aa, .f-grotesk .weights span{font-family:'Space Grotesk',sans-serif}
+  .f-grotesk .sub, .f-grotesk .mock-eyebrow, .f-grotesk .btn, .f-grotesk .para{font-family:'Inter',sans-serif}
+
+  .f-jakarta h2, .f-jakarta .mock-brand, .f-jakarta .aa, .f-jakarta .weights span,
+  .f-jakarta .sub, .f-jakarta .mock-eyebrow, .f-jakarta .btn, .f-jakarta .para{font-family:'Plus Jakarta Sans',sans-serif}
+
+  .f-sora h2, .f-sora .mock-brand, .f-sora .aa, .f-sora .weights span{font-family:'Sora',sans-serif}
+  .f-sora .sub, .f-sora .mock-eyebrow, .f-sora .btn, .f-sora .para{font-family:'Inter',sans-serif}
+
+  footer{text-align:center; color:var(--muted); font-size:13px; padding:40px 22px 60px}
+  @media (max-width:620px){
+    .specimen{grid-template-columns:1fr; text-align:center}
+    .mock-body{padding-bottom:30px}
+    .mock .sub{max-width:none}
+  }
+</style>
+</head>
+<body>
+  <div class="page-head">
+    <div class="kicker">Švari Siela · v4</div>
+    <h1>Šriftų palyginimas</h1>
+    <p>Tas pats pradžios puslapio dizainas su 4 skirtingais šriftais. Peržiūrėkite ir pasakykite, kuris variantas patinka — jį pritaikysiu visai svetainei.</p>
+  </div>
+
+  <!-- OPTION 1: Archivo + Inter -->
+  <section class="option f-archivo">
+    <div class="wrap">
+      <div class="opt-tag"><span class="opt-num">1 · REKOMENDUOJAMA</span> <span class="fonts">Archivo + Inter</span></div>
+      <div class="mock">
+        <div class="mock-bg"><img src="hero-bright.jpg" alt=""></div>
+        <div class="mock-nav">
+          <span class="mock-brand"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 42V22a14 14 0 0 1 28 0v20"/><path d="M18 42V25a6 6 0 0 1 12 0v17"/><path d="M6 42h36"/></svg> ŠVARI SIELA</span>
+          <span class="mock-call">📞 +370 600 00 000</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-eyebrow">Dirbame 24/7 · Visoje Lietuvoje</div>
+          <h2>Valymas po mirties <span class="accent">ir biologinės taršos</span></h2>
+          <p class="sub">Profesionali ir diskretiška pagalba sudėtingiausiose situacijose. Atvykstame per 2 valandas.</p>
+          <div class="cta"><a class="btn btn-primary" href="#">Skambinti 24/7</a><a class="btn btn-ghost" href="#">Mūsų paslaugos</a></div>
+        </div>
+      </div>
+      <div class="specimen">
+        <div class="aa">Aa</div>
+        <div>
+          <div class="weights">
+            <span class="disp w6">Archivo Semibold — antraštės</span>
+            <span class="disp w8">Archivo Extrabold — pagrindinės antraštės</span>
+          </div>
+          <p class="para body">Inter tekstui: 1234567890 — profesionalus biologinės taršos valymas, ąčęėįšųūž. Aiškus, neutralus, patikimas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTION 2: Space Grotesk + Inter -->
+  <section class="option f-grotesk">
+    <div class="wrap">
+      <div class="opt-tag"><span class="opt-num">2</span> <span class="fonts">Space Grotesk + Inter</span></div>
+      <div class="mock">
+        <div class="mock-bg"><img src="hero-bright.jpg" alt=""></div>
+        <div class="mock-nav">
+          <span class="mock-brand"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 42V22a14 14 0 0 1 28 0v20"/><path d="M18 42V25a6 6 0 0 1 12 0v17"/><path d="M6 42h36"/></svg> ŠVARI SIELA</span>
+          <span class="mock-call">📞 +370 600 00 000</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-eyebrow">Dirbame 24/7 · Visoje Lietuvoje</div>
+          <h2>Valymas po mirties <span class="accent">ir biologinės taršos</span></h2>
+          <p class="sub">Profesionali ir diskretiška pagalba sudėtingiausiose situacijose. Atvykstame per 2 valandas.</p>
+          <div class="cta"><a class="btn btn-primary" href="#">Skambinti 24/7</a><a class="btn btn-ghost" href="#">Mūsų paslaugos</a></div>
+        </div>
+      </div>
+      <div class="specimen">
+        <div class="aa">Aa</div>
+        <div>
+          <div class="weights">
+            <span class="w5">Space Grotesk Medium — antraštės</span>
+            <span class="w7">Space Grotesk Bold — pagrindinės antraštės</span>
+          </div>
+          <p class="para">Inter tekstui: 1234567890 — profesionalus biologinės taršos valymas, ąčęėįšųūž. Modernus, savitas, premium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTION 3: Plus Jakarta Sans -->
+  <section class="option f-jakarta">
+    <div class="wrap">
+      <div class="opt-tag"><span class="opt-num">3</span> <span class="fonts">Plus Jakarta Sans (viskas)</span></div>
+      <div class="mock">
+        <div class="mock-bg"><img src="hero-bright.jpg" alt=""></div>
+        <div class="mock-nav">
+          <span class="mock-brand"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 42V22a14 14 0 0 1 28 0v20"/><path d="M18 42V25a6 6 0 0 1 12 0v17"/><path d="M6 42h36"/></svg> ŠVARI SIELA</span>
+          <span class="mock-call">📞 +370 600 00 000</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-eyebrow">Dirbame 24/7 · Visoje Lietuvoje</div>
+          <h2>Valymas po mirties <span class="accent">ir biologinės taršos</span></h2>
+          <p class="sub">Profesionali ir diskretiška pagalba sudėtingiausiose situacijose. Atvykstame per 2 valandas.</p>
+          <div class="cta"><a class="btn btn-primary" href="#">Skambinti 24/7</a><a class="btn btn-ghost" href="#">Mūsų paslaugos</a></div>
+        </div>
+      </div>
+      <div class="specimen">
+        <div class="aa">Aa</div>
+        <div>
+          <div class="weights">
+            <span class="w6">Jakarta Semibold — antraštės</span>
+            <span class="w8">Jakarta Extrabold — pagrindinės antraštės</span>
+          </div>
+          <p class="para">Tas pats šriftas tekstui: 1234567890 — profesionalus biologinės taršos valymas, ąčęėįšųūž. Draugiškas, šiltas, modernus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTION 4: Sora + Inter -->
+  <section class="option f-sora">
+    <div class="wrap">
+      <div class="opt-tag"><span class="opt-num">4</span> <span class="fonts">Sora + Inter</span></div>
+      <div class="mock">
+        <div class="mock-bg"><img src="hero-bright.jpg" alt=""></div>
+        <div class="mock-nav">
+          <span class="mock-brand"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 42V22a14 14 0 0 1 28 0v20"/><path d="M18 42V25a6 6 0 0 1 12 0v17"/><path d="M6 42h36"/></svg> ŠVARI SIELA</span>
+          <span class="mock-call">📞 +370 600 00 000</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-eyebrow">Dirbame 24/7 · Visoje Lietuvoje</div>
+          <h2>Valymas po mirties <span class="accent">ir biologinės taršos</span></h2>
+          <p class="sub">Profesionali ir diskretiška pagalba sudėtingiausiose situacijose. Atvykstame per 2 valandas.</p>
+          <div class="cta"><a class="btn btn-primary" href="#">Skambinti 24/7</a><a class="btn btn-ghost" href="#">Mūsų paslaugos</a></div>
+        </div>
+      </div>
+      <div class="specimen">
+        <div class="aa">Aa</div>
+        <div>
+          <div class="weights">
+            <span class="w6">Sora Semibold — antraštės</span>
+            <span class="w7">Sora Bold — pagrindinės antraštės</span>
+          </div>
+          <p class="para">Inter tekstui: 1234567890 — profesionalus biologinės taršos valymas, ąčęėįšųūž. Geometriškas, tikslus, šiuolaikiškas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Švari Siela · v4 šriftų peržiūra · pasakykite variantą (1–4), o aš pritaikysiu jį visai svetainei.</footer>
+</body>
+</html>
